@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+// App.js
+import React, { useState } from 'react';
 import './App.css';
+import Formulario from './Formulario';
+import Tarjeta from './Tarjeta';
 
 function App() {
+  const [datosPersonales, setDatosPersonales] = useState(null);
+
+  const recibirDatos = (datos) => {
+    setDatosPersonales(datos);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formulario onSubmit={recibirDatos} />
+      <Tarjeta datos={datosPersonales} />
     </div>
   );
 }
